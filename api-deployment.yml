@@ -18,7 +18,13 @@ spec:
           image: antonlarichev/short-api
           ports:
             - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: short-api-secret
+                  key: DATABASE_URL
           resources:
             limits:
-              memory: "250Mi"
+              memory: "500Mi"
               cpu: "200m"
